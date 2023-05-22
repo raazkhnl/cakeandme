@@ -1,0 +1,173 @@
+{
+    "cakes": [
+      {
+        "id": 1,
+        "name": "Chocolate Fudge Cake",
+        "description": "A rich and indulgent chocolate cake with layers of fudge filling.",
+        "imageUrl": "https://example.com/chocolate_fudge_cake.jpg",
+        "price": 25.99
+      },
+      {
+        "id": 2,
+        "name": "Red Velvet Cake",
+        "description": "A moist and velvety red-colored cake with cream cheese frosting.",
+        "imageUrl": "https://example.com/red_velvet_cake.jpg",
+        "price": 29.99
+      },
+      {
+        "id": 3,
+        "name": "Carrot Cake",
+        "description": "A flavorful cake made with grated carrots and topped with cream cheese icing.",
+        "imageUrl": "https://example.com/carrot_cake.jpg",
+        "price": 27.99
+      },
+      {
+        "id": 4,
+        "name": "Vanilla Bean Cake",
+        "description": "A classic vanilla cake made with real vanilla beans and buttercream frosting.",
+        "imageUrl": "https://example.com/vanilla_bean_cake.jpg",
+        "price": 24.99
+      },
+      {
+        "id": 5,
+        "name": "Lemon Raspberry Cake",
+        "description": "A refreshing cake with lemon-flavored layers and raspberry filling.",
+        "imageUrl": "https://example.com/lemon_raspberry_cake.jpg",
+        "price": 26.99
+      },
+      {
+        "id": 6,
+        "name": "Strawberry Shortcake",
+        "description": "A delightful cake filled with fresh strawberries and whipped cream.",
+        "imageUrl": "https://example.com/strawberry_shortcake.jpg",
+        "price": 23.99
+      },
+      {
+        "id": 7,
+        "name": "Coconut Cream Cake",
+        "description": "A tropical-inspired cake with layers of coconut and creamy frosting.",
+        "imageUrl": "https://example.com/coconut_cream_cake.jpg",
+        "price": 28.99
+      },
+      {
+        "id": 8,
+        "name": "Black Forest Cake",
+        "description": "A classic German cake with layers of chocolate, cherries, and whipped cream.",
+        "imageUrl": "https://example.com/black_forest_cake.jpg",
+        "price": 30.99
+      },
+      {
+        "id": 9,
+        "name": "Pineapple Upside-Down Cake",
+        "description": "A deliciously caramelized cake with pineapple rings and cherries.",
+        "imageUrl": "https://example.com/pineapple_upside_down_cake.jpg",
+        "price": 25.99
+      },
+      {
+        "id": 10,
+        "name": "Banana Nut Cake",
+        "description": "A moist and nutty cake made with ripe bananas and topped with cream cheese frosting.",
+        "imageUrl": "https://example.com/banana_nut_cake.jpg",
+        "price": 26.99
+      },
+      {
+        "id": 11,
+        "name": "German Chocolate Cake",
+        "description": "A decadent chocolate cake with a gooey coconut-pecan filling.",
+        "imageUrl": "https://example.com/german_chocolate_cake.jpg",
+        "price": 31.99
+      },
+      {
+        "id": 12,
+        "name": "Mango Mousse Cake",
+        "description": "A light and airy cake with layers of mango mousse and a sponge base.",
+        "imageUrl": "https://example.com/mango_mousse_cake.jpg",
+        "price": 27.99
+      },
+      {
+        "id": 13,
+        "name": "Coffee Toffee Cake",
+        "description": "A delightful coffee-flavored cake with toffee bits and caramel frosting.",
+        "imageUrl": "https://example.com/coffee_toffee_cake.jpg",
+        "price": 24.99
+      },
+      {
+        "id": 14,
+        "name": "Oreo Cheesecake",
+        "description": "A heavenly cheesecake with a chocolate Oreo crust and cookie crumbles.",
+        "imageUrl": "https://example.com/oreo_cheesecake.jpg",
+        "price": 29.99
+      },
+      {
+        "id": 15,
+        "name": "Raspberry Almond Cake",
+        "description": "A delightful cake with almond-flavored layers and raspberry filling.",
+        "imageUrl": "https://example.com/raspberry_almond_cake.jpg",
+        "price": 26.99
+      },
+      {
+        "id": 16,
+        "name": "Peanut Butter Chocolate Cake",
+        "description": "A heavenly combination of peanut butter and chocolate in a moist cake.",
+        "imageUrl": "https://example.com/peanut_butter_chocolate_cake.jpg",
+        "price": 28.99
+      },
+      {
+        "id": 17,
+        "name": "Coconut Key Lime Cake",
+        "description": "A tropical-inspired cake with coconut and tangy key lime flavors.",
+        "imageUrl": "https://example.com/coconut_key_lime_cake.jpg",
+        "price": 27.99
+      },
+      {
+        "id": 18,
+        "name": "Salted Caramel Cake",
+        "description": "A delectable cake with layers of caramel and a hint of sea salt.",
+        "imageUrl": "https://example.com/salted_caramel_cake.jpg",
+        "price": 25.99
+      },
+      {
+        "id": 19,
+        "name": "Marble Cake",
+        "description": "A visually stunning cake with swirls of vanilla and chocolate.",
+        "imageUrl": "https://example.com/marble_cake.jpg",
+        "price": 23.99
+      },
+      {
+        "id": 20,
+        "name": "Lavender Honey Cake",
+        "description": "A fragrant cake infused with lavender and drizzled with honey.",
+        "imageUrl": "https://example.com/lavender_honey_cake.jpg",
+        "price": 28.99
+      },
+      {
+        "id": 21,
+        "name": "Caramel Apple Cake",
+        "description": "A delightful cake with layers of caramel and fresh apple slices.",
+        "imageUrl": "https://example.com/caramel_apple_cake.jpg",
+        "price": 26.99
+      },
+      {
+        "id": 22,
+        "name": "Mint Chocolate Chip Cake",
+        "description": "A refreshing cake with mint-flavored layers and chocolate chips.",
+        "imageUrl": "https://example.com/mint_chocolate_chip_cake.jpg",
+        "price": 24.99
+      },
+      {
+        "id": 23,
+        "name": "Blueberry Lemon Cake",
+        "description": "A tangy lemon cake with bursts of fresh blueberries in every bite.",
+        "imageUrl": "https://example.com/blueberry_lemon_cake.jpg",
+        "price": 25.99
+      },
+      {
+        "id": 24,
+        "name": "Hazelnut Praline Cake",
+        "description": "A rich and nutty cake with layers of hazelnut praline and chocolate ganache.",
+        "imageUrl": "https://example.com/hazelnut_praline_cake.jpg",
+        "price": 29.99
+      }
+    ]
+  }
+  

@@ -1,0 +1,89 @@
+{
+    "cakes": [
+      {
+        "id": 1,
+        "name": "Chocolate Fudge Cake",
+        "description": "A rich and indulgent chocolate cake with layers of fudge filling.",
+        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chocolate-fudge-cake-91de17a.jpg",
+        "price": 25.99
+      },
+      {
+        "id": 2,
+        "name": "Red Velvet Cake",
+        "description": "A moist and velvety red-colored cake with cream cheese frosting.",
+        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2021/10/Red-velvet-cake-with-cheesecake-buttercream-7797aa1.jpg?quality=90&webp=true&resize=600,545",
+        "price": 29.99
+      },
+      {
+        "id": 3,
+        "name": "Carrot Cake",
+        "description": "A flavorful cake made with grated carrots and topped with cream cheese icing.",
+        "imageUrl": "https://preppykitchen.com/wp-content/uploads/2020/04/Carrot-cake-Square-1200px-preppy-kitchen-1.jpg",
+        "price": 27.99
+      },
+      {
+        "id": 4,
+        "name": "Vanilla Bean Cake",
+        "description": "A classic vanilla cake made with real vanilla beans and buttercream frosting.",
+        "imageUrl": "https://aclassictwist.com/wp-content/uploads/2023/02/Vanilla-Bean-Cake-with-Nutella-Frosting-2-735x489.jpg",
+        "price": 24.99
+      },
+      {
+        "id": 5,
+        "name": "Lemon Raspberry Cake",
+        "description": "A refreshing cake with lemon-flavored layers and raspberry filling.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Raspberry-Lemon-Cake_EXPS_FT22_31722_F_0303_1.jpg",
+        "price": 26.99
+      },
+      {
+        "id": 6,
+        "name": "Strawberry Shortcake",
+        "description": "A delightful cake filled with fresh strawberries and whipped cream.",
+        "imageUrl": "https://dessertlady.ca/media/catalog/product/cache/d0f1eb656863c2fe1621ab6bbaddad68/s/t/strawberryshortcake_1.jpg",
+        "price": 23.99
+      },
+      {
+        "id": 7,
+        "name": "Coconut Cream Cake",
+        "description": "A tropical-inspired cake with layers of coconut and creamy frosting.",
+        "imageUrl": "https://www.southernliving.com/thmb/4cqMCX1NKLPmOI_WYlFn1v5g7xg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/fluffy-coconut-frosting-sl-5af6656473584448a59b60dc8a86e084.jpg",
+        "price": 28.99
+      },
+      {
+        "id": 8,
+        "name": "Black Forest Cake",
+        "description": "A classic German cake with layers of chocolate, cherries, and whipped cream.",
+        "imageUrl": "https://www.sainsburysmagazine.co.uk/uploads/media/720x770/07/4577-black-forest-gateau-560.jpg?v=1-0",
+        "price": 30.99
+      },
+      {
+        "id": 9,
+        "name": "Pineapple Upside-Down Cake",
+        "description": "A deliciously caramelized cake with pineapple rings and cherries.",
+        "imageUrl": "https://images-gmi-pmc.edge-generalmills.com/d580fee0-762d-4245-9499-c4ae2e269e62.jpg",
+        "price": 25.99
+      },
+      {
+        "id": 10,
+        "name": "Banana Nut Cake",
+        "description": "A moist-nutty cake made with ripe bananas and topped with cream cheese frosting.",
+        "imageUrl": "https://www.africanbites.com/wp-content/uploads/2022/03/IMG_7670-scaled.jpg",
+        "price": 26.99
+      },
+      {
+        "id": 11,
+        "name": "German Chocolate Cake",
+        "description": "A decadent chocolate cake with a gooey coconut-pecan filling.",
+        "imageUrl": "https://www.culinaryhill.com/wp-content/uploads/2023/01/German-Chocolate-Cake-Culinary-Hill-1200x800-1.jpg",
+        "price": 31.99
+      },
+      {
+        "id": 12,
+        "name": "Mango Mousse Cake",
+        "description": "A light and airy cake with layers of mango mousse and a sponge base.",
+        "imageUrl": "https://www.cocolabakery.com/mm5/graphics/00000001/IMG_7099.jpg",
+        "price": 27.99
+      }
+    ]
+  }
+  
