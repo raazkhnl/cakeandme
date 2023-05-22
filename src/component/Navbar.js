@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 const Navbar = () => {
   let location = useLocation()
   return (
-   <nav className="navbar navbar-expand-md bg-light">
+   <nav className="navbar navbar-expand-md bg-light sticky-top">
   <div className="container-fluid">
     <Link className="navbar-brand" to="/"><img  style={{width: "50px"}} src="/favicon/icon.png" alt="icon" /></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,28 +12,28 @@ const Navbar = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
+        <li className="nav-item mx-2">
           <Link className={`nav-link ${location.pathname==="/" ? "active" : ""}`}  aria-current="page" to="/">Home</Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item mx-2">
           <Link className={`nav-link ${location.pathname==="/cakes" ? "active" : ""}`}  to="/cakes">Cakes</Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item mx-2">
           <Link className={`nav-link ${location.pathname==="/aboutus" ? "active" : ""}`}  to="/aboutus">About Us</Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item mx-2">
           <Link className={`nav-link ${location.pathname==="/contactus" ? "active" : ""}`}  to="/contactus">Contact Us</Link>
         </li>
 
         <li className="nav-item dropdown">
-          <Link className="nav-link dropdown-toggle " to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <Link className="nav-link  mx-2 dropdown-toggle " to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
           </Link>
           <ul className="dropdown-menu">
-            <li><Link className={`nav-link ${location.pathname==="/" ? "active" : ""}`}  to="/"></Link></li>
-            <li><Link className={`nav-link ${location.pathname==="/" ? "active" : ""}`}  to="/">Another action</Link></li>
+            <li><Link className={`nav-link ${location.pathname==="/" ? "active" : ""}`}  to="/">Birthday</Link></li>
+            <li><Link className={`nav-link ${location.pathname==="/" ? "active" : ""}`}  to="/">Anniversary</Link></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><Link className={`nav-link ${location.pathname==="/" ? "active" : ""}`}  to="/">Something else here</Link></li>
+            <li><Link className={`nav-link ${location.pathname==="/" ? "active" : ""}`}  to="/">Custom Specialized</Link></li>
           </ul>
         </li>
       </ul>

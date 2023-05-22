@@ -1,29 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Cake from './Cake';
+import Cake from './Cakes';
+import Cakes from './Cakes';
 
-const Home = () => {
-
-  //Cake Fetching
-  const [cakes, setCakes] = useState([]);
-
-  useEffect(() => {
-    const fetchCakes = async () => {
-      try {
-        const response = await fetch('/cakes.json'); // Adjust the path based on your project structure
-        const data = await response.json();
-        // const data = await fetch('./cakes.json')
-        console.log(data)
-        setCakes(data.cakes);
-      } catch (error) {
-        console.error('Error fetching cakes:', error);
-      }
-    };
-
-    fetchCakes();
-    // eslint-disable-next-line
-  }, []);
-
-
+const Home = (props) => {
   return (
     <div>
   <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
@@ -91,14 +70,8 @@ const Home = () => {
     </button>
   </div>
 
-    
-  <div className="row container-fluid mt-4">
-  <h2>Featured Cakes</h2>
-  <h6>{cakes.length === 0 && "No notes to display."}</h6>
-                {cakes.map((cake) => {
-                    return <Cake key={cake.id}  cake={cake}/>
-                })}
-                </div>
+    <Cakes setProgress={props.setProgress}/>
+  
 </div>
 
   )
