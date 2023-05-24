@@ -26,10 +26,10 @@ useEffect(() => {
 const ref = useRef(null)
 const refClose = useRef(null)
 
-const [cake, setCake] = useState({id: '', name: '', description:''})
+const [cake, setCake] = useState({name: '', description:''})
 const buyCake = (currentCake) => {
   ref.current.click();
-  setCake({ id: currentCake.id, name: currentCake.name, description: currentCake.description})
+  setCake({ name: currentCake.name, description: currentCake.description})
 }
 const onChange = (e) => {
   setCake({ ...cake, [e.target.name]: e.target.value })
@@ -48,12 +48,13 @@ const onChange = (e) => {
                         
 
                    
-                    <div className="container col-md-6 rounded py-2 px-5" style={{backgroundColor: '#992d99'}}>
-                      <button ref={refClose} type="button" className="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close"></button>
-      <div className="h1  text-center">
-        Orded Now
-        <hr />
-      </div>
+                    <div className="modal-dialog rounded" style={{backgroundColor: '#992d99'}}>
+                    <div className="modal-content " style={{backgroundColor: '#992d99'}}>
+                    <div className="modal-header style={{backgroundColor: '#992d99'}}">
+                            <h3 className="modal-title" id="exampleModalLabel">Order Now</h3>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+      <div className="modal-body">
       <form action='https://formspree.io/f/moqzzwvr' method='POST'>
         <div className="form-group">
           <label htmlFor="username">Cake Name:</label>
@@ -82,14 +83,17 @@ const onChange = (e) => {
           <label htmlFor="pwd">Description:</label>
           <textarea name="description" value={cake.description} onChange={onChange} className="form-control rounded" placeholder="Any Description" rows={5} />
         </div>
-        <center><button disabled={cake.name.length < 3}  type="submit" className="btn btn-light center bg-light mt-2" >Update Note</button></center>
       </form>
-  
-  
+      <div className="modal-footer">
+            <center><button disabled={cake.name.length < 3}  type="submit" className="btn order-button btn-light center bg-light mt-2" ></button></center>
 
+      </div>
+      </div>
+  </div>
+</div>
 
                 </div>
-            </div>
+           
     <div className="row container-fluid mt-4 text-center">
   <h2>Featured Cakes</h2>
   <h6>{cakes.length === 0 && "No cakes to display."}</h6>

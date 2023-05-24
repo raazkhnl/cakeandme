@@ -52,7 +52,7 @@ const Order = (props) => {
           <textarea name="description" className="form-control rounded" placeholder="Any Description" rows={5} defaultValue={""} />
         </div>
         <center>
-        <button type="submit" className="btn btn-light bg-light mt-2" >Send Message</button>
+        <button type="submit" className="btn order-button btn-light bg-light mt-2" >Order</button>
          
         </center>
       </form>
