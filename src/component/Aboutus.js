@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const Aboutus = () => {
+const Aboutus = (props) => {
+
+  //Just for loadingbar
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      props.setProgress(80);
+      setTimeout(() => {
+        props.setProgress(100);
+      }, 10);
+    }, 10);
+      return () => clearTimeout(timer);
+      // eslint-disable-next-line
+  }, []);
+
   return (
 <div className="container text-center">
   <div className="container text-center">

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import Cake from './Cakes';
+// import React, { useEffect, useState } from 'react'
+// import Cake from './Cakes';
 import Cakes from './Cakes';
 
 const Home = (props) => {

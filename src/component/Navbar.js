@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
    <nav className="navbar navbar-expand-md bg-light sticky-top">
   <div className="container-fluid">
-    <Link className="navbar-brand" to="/"><img  style={{width: "50px"}} src="/favicon/icon.png" alt="icon" /></Link>
+    <Link className="navbar-brand" to="/"><img  style={{width: "50px"}} src="/favicon/logo.png" alt="icon" /></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
     </button>
@@ -17,6 +17,9 @@ const Navbar = () => {
         </li>
         <li className="nav-item mx-2">
           <Link className={`nav-link ${location.pathname==="/cakes" ? "active" : ""}`}  to="/cakes">Cakes</Link>
+        </li>
+        <li className="nav-item mx-2">
+          <Link className={`nav-link ${location.pathname==="/ordernow" ? "active" : ""}`}  to="/ordernow">Order Now</Link>
         </li>
         <li className="nav-item mx-2">
           <Link className={`nav-link ${location.pathname==="/aboutus" ? "active" : ""}`}  to="/aboutus">About Us</Link>
@@ -39,7 +42,7 @@ const Navbar = () => {
       </ul>
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button className="btn btn-outline-success" type="submit">Search</button>
+        <button className="btn " style={{backgroundColor:"#992d99"}}  type="submit">Search</button>
       </form>
     </div>
   </div>

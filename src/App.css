@@ -1,7 +1,7 @@
 body{
   font-family: "Brush Script MT", cursive;
   background-color: #cc99cc;
-  font-size: large;
+  font-size: 19px;
   color: hsl(345, 100%, 2%);
 }
 .App {
@@ -18,7 +18,16 @@ body{
 .card:hover {
   box-shadow: 0 40px 40px 0 rgba(0,0,0,0.2);
 } 
+ .order-button {
+      transition: transform 0.5s;
+    }
 
+    .order-button:hover {
+      transform: translateX(-5px);
+      animation: shake 1s infinite;
+    }
+
+ 
 .zoom {
   transition: transform .2s;
 }
@@ -39,11 +48,27 @@ a, h3 {
   color: #992d99;
   text-shadow: 5px 7px 10px #386794;
 }
+.social-icon:hover{
+  color: hsl(345, 100%, 2%);
+}
+
+.btn:hover{
+  color:hsl(345, 100%, 2%);
+  /* opacity: 80%; */
+ }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2.5px); }
+  50% { transform: translateX(2.5px); }
+  75% { transform: translateX(-2.5px); }
+  100% { transform: translateX(0); }
 }
 
 @keyframes App-logo-spin {
