@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 const Navbar = () => {
   let location = useLocation()
   return (
-   <nav className="navbar navbar-expand-md bg-light sticky-top">
+   <nav className="navbar navbar-expand-lg  bg-light sticky-top">
   <div className="container-fluid">
     <Link className="navbar-brand" to="/"><img  style={{width: "50px"}} src="/favicon/logo.png" alt="icon" /></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

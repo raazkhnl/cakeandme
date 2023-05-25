@@ -50,10 +50,12 @@ const onChange = (e) => {
                    
                     <div className="modal-dialog rounded" style={{backgroundColor: '#992d99'}}>
                     <div className="modal-content " style={{backgroundColor: '#992d99'}}>
-                    <div className="modal-header style={{backgroundColor: '#992d99'}}">
-                            <h3 className="modal-title" id="exampleModalLabel">Order Now</h3>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div className="modal-header " >
+                            <h1 className="text-center modal-title" id="exampleModalLabel" style={{backgroundColor: '#992d99', textAlign:'center' }}>Order Now</h1>
+                            <button ref={refClose} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <hr />
+
       <div className="modal-body">
       <form action='https://formspree.io/f/moqzzwvr' method='POST'>
         <div className="form-group">
@@ -83,11 +85,11 @@ const onChange = (e) => {
           <label htmlFor="pwd">Description:</label>
           <textarea name="description" value={cake.description} onChange={onChange} className="form-control rounded" placeholder="Any Description" rows={5} />
         </div>
+            <center><button disabled={cake.name.length < 3}  type="submit" className="btn order-button btn-light center bg-light mt-2" >Order</button></center>
       </form>
-      <div className="modal-footer">
-            <center><button disabled={cake.name.length < 3}  type="submit" className="btn order-button btn-light center bg-light mt-2" ></button></center>
+      
 
-      </div>
+      
       </div>
   </div>
 </div>

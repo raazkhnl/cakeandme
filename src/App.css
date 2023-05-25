@@ -27,7 +27,9 @@ body{
       animation: shake 1s infinite;
     }
 
- 
+ .nav-link{
+  color: #a1097b !important;
+ }
 .zoom {
   transition: transform .2s;
 }
@@ -55,6 +57,12 @@ a, h3 {
 .btn:hover{
   color:hsl(345, 100%, 2%);
   /* opacity: 80%; */
+ }
+
+ .modal-header{
+  border: none;
+  margin-left: 35%;
+padding: 5px;
  }
 
 @media (prefers-reduced-motion: no-preference) {
