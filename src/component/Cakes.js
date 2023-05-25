@@ -96,12 +96,12 @@ const onChange = (e) => {
 
                 </div>
            
-    <div className="row container-fluid mt-4 text-center">
+    <div className="row cake container-fluid mt-4 text-center">
   <h2>Featured Cakes</h2>
   <h6>{cakes.length === 0 && "No cakes to display."}</h6>
                 {cakes.map((cake) => {
-                    return <div className="col-sm-6 col-md-4 col-lg-3" key={cake.id}>
-                    <div className="card mb-5">
+                    return <div className="col-sm-6 col-md-4 col-lg-3 " key={cake.id}>
+                    <div className="card mb-5 " >
                       <div className='zoom '>
                       <img src={cake.imageUrl} className="rounded-bottom card-img-top zoom" style={{height: "250px"}} alt={cake.name} />
                       </div>
@@ -109,12 +109,12 @@ const onChange = (e) => {
                         <h3 className="card-title">{cake.name}</h3>
                         <p className="card-text">{cake.description}</p>
                         <p className="card-text">Price: ${cake.price}</p>
-                        <div className="container mt-4">
+                       
                           <button className="btn order-button" style={{backgroundColor:"#992d99"}} onClick={()=>{buyCake(cake)}}>
                             Order Now
                             <i className="fas fa-cart-arrow-down ml-2"></i>
                           </button>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>

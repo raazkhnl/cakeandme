@@ -12,14 +12,14 @@ const Footer = () => {
       </div>
       <div className=" col-lg-6 col-md-12 text-center">
         <div className="social-icons mt-3">
-        <a href="facebook.com" className="social-icon mx-3" target="_blank"><i className="fab fa-facebook" /></a>
-          <a href="twitter.com" className="social-icon mx-3" target="_blank"><i className="fab fa-twitter" /></a>
-          <a href="instagram.com" className="social-icon mx-3" target="_blank"><i className="fab fa-instagram" /></a>
+        <a href="https://facebook.com/raazkhnl" className="social-icon mx-3"  rel="noreferrer" target="_blank"><i className="fab fa-facebook" /></a>
+          <a href="mailto:cakeandme.bake@gmail.com" className="social-icon mx-3"  rel="noreferrer" target="_blank"><i className="fa fa-at" /></a>
+          <a href="https://instagram.com/raazkhnl" className="social-icon mx-3"  rel="noreferrer" target="_blank"><i className="fab fa-instagram" /></a>
+          <a href="tel:+9779863244500" className="social-icon mx-3"  rel="noreferrer" target="_blank"><i className="fa fa-phone" /></a>
         </div>
-        <p className="mt-3">54 Nørrebrogade, 2200, Copenhagen, Denmark
-
-</p>
-        <p>Contact No: 123-456-7890</p>
+        <p className="mt-3">54 Nørrebrogade, 2200, Copenhagen, Denmark</p>
+        
+        <p>Contact No: +977-9863244500</p>
       </div>
     </div>
   </div>

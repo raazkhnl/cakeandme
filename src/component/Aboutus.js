@@ -18,8 +18,12 @@ const Aboutus = (props) => {
 <div className="container text-center">
   <div className="container text-center">
     <div className="row">
-      <div className="col-lg-12">
+      <div className="col-lg-12 mt-3">
         <h3>About Us</h3>
+    
+  <img src="./cake/chefs.jpg" className="img-fluid rounded-circle" alt="Chefs" style={{height:"150px"}}/>
+
+
         <p className="mb-4">Welcome to Cake & ME, your go-to destination for exquisite cakes! We are a passionate startup dedicated to crafting personalized and unforgettable cake experiences for every celebration. Our team of talented bakers and artists takes pride in using the finest ingredients to create mouthwatering flavors and stunning designs. From birthdays to weddings, we believe that our cakes add a touch of sweetness and elegance to your special moments. Join us on this sweet journey and discover the magic of Cake & ME.</p>
         <h3>Our Objectives</h3>
         <ul className="list-unstyled">

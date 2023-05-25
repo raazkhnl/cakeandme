@@ -1,7 +1,7 @@
 body{
   font-family: "Brush Script MT", cursive;
   background-color: #cc99cc;
-  font-size: 19px;
+  font-size: 20px;
   color: hsl(345, 100%, 2%);
 }
 .App {
@@ -64,7 +64,16 @@ a, h3 {
   margin-left: 35%;
 padding: 5px;
  }
+ .cake{
+  margin-left: 2px;
+ }
 
+ @media (max-width: 480px) {
+  .map-frame {
+      width: 350px; /* Set the width to 300px */
+  }
+}
+ 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
