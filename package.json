@@ -53,5 +53,12 @@
   "license": "ISC",
   "devDependencies": {
     "gh-pages": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raazkhnl/cakeandme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raazkhnl/cakeandme/issues"
   }
 }

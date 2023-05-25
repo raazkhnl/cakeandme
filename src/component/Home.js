@@ -19,42 +19,42 @@ const Home = (props) => {
     </div>
     <div className="carousel-inner">
       <div className="carousel-item active">
-        <img src="/cake/banner1.jpg" className="d-block w-100" alt="..." />
+        <img src="./cake/banner1.jpg" className="d-block w-100" alt="..." />
         <div className="carousel-caption d-none d-sm-block">
           <h3>Delight in Every Bite</h3>
         </div>
       </div>
       <div className="carousel-item">
-        <img src="/cake/banner2.jpg" className="d-block w-100" alt="..." />
+        <img src="./cake/banner2.jpg" className="d-block w-100" alt="..." />
         <div className="carousel-caption d-none d-sm-block">
           <h3>Cakes for Unforgettable Moments</h3>
         </div>
       </div>
       <div className="carousel-item">
-        <img src="/cake/banner3.jpg" className="d-block w-100" alt="..." />
+        <img src="./cake/banner3.jpg" className="d-block w-100" alt="..." />
         <div className="carousel-caption d-none d-sm-block">
           <h3>Cakes that Make Memories Last</h3>
         </div>
       </div>
       <div className="carousel-item">
-        <img src="/cake/banner4.jpg" className="d-block w-100" alt="..." />
+        <img src="./cake/banner4.jpg" className="d-block w-100" alt="..." />
         <div className="carousel-caption d-none d-sm-block">
           <h3>Sweet Masterpieces for Every Palate</h3>
         </div>
       </div>
       <div className="carousel-item">
-        <img src="/cake/banner5.jpg" className="d-block w-100" alt="..." />
+        <img src="./cake/banner5.jpg" className="d-block w-100" alt="..." />
         <div className="carousel-caption d-none d-sm-block">
           <h3>"From Our Oven to Your Celebration</h3>
         </div>
       </div>
       <div className="carousel-item">
-        <img src="/cake/banner6.jpg" className="d-block w-100" alt="..." />
+        <img src="./cake/banner6.jpg" className="d-block w-100" alt="..." />
         <div className="carousel-caption d-none d-sm-block">
           <h3>The Sweetest Destination in Town</h3>
         </div>
       </div><div className="carousel-item">
-        <img src="/cake/banner3.jpg" className="d-block w-100" alt="..." />
+        <img src="./cake/banner3.jpg" className="d-block w-100" alt="..." />
         <div className="carousel-caption d-none d-sm-block">
           <h3>Cake Bliss for Every Occasion</h3>
         </div>

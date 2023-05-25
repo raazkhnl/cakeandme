@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="row">
       <div className="col-lg-6 col-md-12  ">
         <div className="d-flex justify-content-center">
-          <img src="/favicon/logo.png" alt="Company Logo" className="img-fluid footer-logo" style={{height:"150px"}}/>
+          <img src="./favicon/logo.png" alt="Company Logo" className="img-fluid footer-logo" style={{height:"150px"}}/>
         </div>
       </div>
       <div className=" col-lg-6 col-md-12 text-center">

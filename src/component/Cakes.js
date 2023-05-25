@@ -8,7 +8,7 @@ useEffect(() => {
   const fetchCakes = async () => {
     try {
       props.setProgress(20);
-      const response = await fetch('/cakes.json'); // Adjust the path based on .json location
+      const response = await fetch('./cakes.json'); // Adjust the path based on .json location
       props.setProgress(40);
       const data = await response.json();
       props.setProgress(60);
