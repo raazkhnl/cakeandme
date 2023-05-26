@@ -59,7 +59,7 @@ const Contactus = (props) => {
 
 
 
-        <div className="container col-lg-5  rounded p-3 m-3" style={{ backgroundColor: '#992d99' }}>
+        <div className="container col-lg-5 map-frame rounded p-3 m-3" style={{ backgroundColor: '#992d99' }}>
           <div className="text-center">
             Contact Us
             <hr />
