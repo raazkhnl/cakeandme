@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cakeandme/static/css/main.308c956e.css",
-    "main.js": "/cakeandme/static/js/main.56412cf5.js",
+    "main.js": "/cakeandme/static/js/main.ff3a5bc0.js",
     "static/js/787.5094eb87.chunk.js": "/cakeandme/static/js/787.5094eb87.chunk.js",
     "index.html": "/cakeandme/index.html",
     "main.308c956e.css.map": "/cakeandme/static/css/main.308c956e.css.map",
-    "main.56412cf5.js.map": "/cakeandme/static/js/main.56412cf5.js.map",
+    "main.ff3a5bc0.js.map": "/cakeandme/static/js/main.ff3a5bc0.js.map",
     "787.5094eb87.chunk.js.map": "/cakeandme/static/js/787.5094eb87.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.308c956e.css",
-    "static/js/main.56412cf5.js"
+    "static/js/main.ff3a5bc0.js"
   ]
 }
