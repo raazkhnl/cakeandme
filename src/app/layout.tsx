@@ -6,6 +6,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
 import { FlavorGlow } from "@/components/FlavorGlow";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import "./globals.css";
 
 const display = Playfair_Display({
@@ -31,7 +33,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cakes by Ratna",
     description: "An independent atelier in Kathmandu. Built-to-order, hand-crafted cakes.",
-    type: "website"
+    type: "website",
+    images: [{ url: "/signature-cake.jpg", width: 1200, height: 630 }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cakes by Ratna",
+    description: "An independent atelier in Kathmandu. Built-to-order, hand-crafted cakes.",
+    images: ["/signature-cake.jpg"]
   },
   icons: { icon: "/logo.png" }
 };
@@ -43,11 +52,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <FlavorGlow />
           <Navbar />
-          <main className="relative">{children}</main>
+          <main id="main" className="relative">{children}</main>
           <Footer />
           <CartDrawer />
+          <WhatsAppButton />
+          <ScrollToTop />
           <Toaster
-            position="bottom-right"
+            position="bottom-left"
             toastOptions={{
               style: {
                 background: "hsl(var(--surface-container))",

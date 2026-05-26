@@ -13,7 +13,7 @@ export function Footer() {
     <footer className="relative mt-32 border-t border-border/60 bg-surface-low/40">
       <div className="container-page py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <div className="flex items-center gap-3">
               <Image src="/logo.png" alt="" width={44} height={44} className="rounded-full bg-primary/5 p-1 ring-1 ring-border" />
               <div>
@@ -41,23 +41,43 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="md:col-span-3">
-            <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-foreground">Explore</p>
+          <div className="md:col-span-2">
+            <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-foreground">Shop</p>
             <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
-              <li><Link href="/shop" className="hover:text-foreground">Shop</Link></li>
-              <li><Link href="/about" className="hover:text-foreground">Our story</Link></li>
-              <li><Link href="/contact" className="hover:text-foreground">Contact</Link></li>
-              <li><Link href="/track" className="hover:text-foreground">Track order</Link></li>
+              <li><Link href="/shop" className="hover:text-foreground">All cakes</Link></li>
+              <li><Link href="/categories" className="hover:text-foreground">Categories</Link></li>
+              <li><Link href="/gallery" className="hover:text-foreground">Gallery</Link></li>
+              <li><Link href="/booking" className="hover:text-foreground">Consultation</Link></li>
             </ul>
           </div>
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-2">
+            <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-foreground">Account</p>
+            <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
+              <li><Link href="/login" className="hover:text-foreground">Sign in</Link></li>
+              <li><Link href="/track" className="hover:text-foreground">Track order</Link></li>
+              <li><Link href="/wishlist" className="hover:text-foreground">Wishlist</Link></li>
+              <li><Link href="/account" className="hover:text-foreground">Profile</Link></li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-foreground">More</p>
+            <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
+              <li><Link href="/about" className="hover:text-foreground">Our story</Link></li>
+              <li><Link href="/faq" className="hover:text-foreground">FAQ</Link></li>
+              <li><Link href="/privacy" className="hover:text-foreground">Privacy</Link></li>
+              <li><Link href="/terms" className="hover:text-foreground">Terms</Link></li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
             <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-foreground">Visit</p>
             <p className="text-sm text-muted-foreground">Kathmandu, Nepal</p>
             <p className="mt-3 text-sm text-muted-foreground">{email}</p>
             <p className="text-sm text-muted-foreground">{phone}</p>
             <p className="mt-6 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Open by appointment · Daily, 9–6
+              By appointment · 9–6 daily
             </p>
           </div>
         </div>

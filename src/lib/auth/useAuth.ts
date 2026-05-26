@@ -7,12 +7,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   signOut as fbSignOut,
+  sendPasswordResetEmail,
   onAuthStateChanged,
   updateProfile,
   type User
 } from "firebase/auth";
 import { getFirebaseAuth, firebaseConfigured } from "@/lib/firebase/client";
 import { isAdminEmail } from "@/lib/utils";
+import { ensureUserProfile } from "@/lib/data/users";
 
 export type AuthState = {
   user: User | null;
@@ -26,6 +28,7 @@ export function useAuth(): AuthState & {
   signInEmail: (email: string, password: string) => Promise<void>;
   signUpEmail: (email: string, password: string, name?: string) => Promise<void>;
   signOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
 } {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -36,9 +39,16 @@ export function useAuth(): AuthState & {
       setLoading(false);
       return;
     }
-    const unsub = onAuthStateChanged(auth, (u) => {
+    const unsub = onAuthStateChanged(auth, async (u) => {
       setUser(u);
       setLoading(false);
+      if (u) {
+        try {
+          await ensureUserProfile({ uid: u.uid, email: u.email ?? "", displayName: u.displayName ?? undefined });
+        } catch {
+          // best-effort
+        }
+      }
     });
     return unsub;
   }, []);
@@ -68,6 +78,12 @@ export function useAuth(): AuthState & {
     await fbSignOut(auth);
   };
 
+  const resetPassword = async (email: string) => {
+    const auth = getFirebaseAuth();
+    if (!auth) throw new Error("Authentication isn't configured.");
+    await sendPasswordResetEmail(auth, email);
+  };
+
   return {
     user,
     loading,
@@ -76,6 +92,7 @@ export function useAuth(): AuthState & {
     signInGoogle,
     signInEmail,
     signUpEmail,
-    signOut
+    signOut,
+    resetPassword
   };
 }

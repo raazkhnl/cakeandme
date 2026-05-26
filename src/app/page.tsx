@@ -4,6 +4,7 @@ import { FeaturedProducts } from "@/components/FeaturedProducts";
 import { OurStory } from "@/components/OurStory";
 import { Marquee } from "@/components/Marquee";
 import { Testimonials } from "@/components/Testimonials";
+import { Newsletter } from "@/components/Newsletter";
 import { CTA } from "@/components/CTA";
 import { SEED_CATEGORIES, SEED_PRODUCTS, SEED_CONTENT } from "@/lib/data/seed";
 
@@ -33,6 +34,7 @@ export default function HomePage() {
       {content.testimonials && content.testimonials.length > 0 && (
         <Testimonials items={content.testimonials} />
       )}
+      <Newsletter source="home" />
       <CTA />
     </>
   );

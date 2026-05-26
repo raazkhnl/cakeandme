@@ -11,6 +11,8 @@ export type Product = {
   images: string[];
   featured?: boolean;
   active: boolean;
+  inStock?: boolean;
+  leadTimeHours?: number;
   createdAt?: number;
   updatedAt?: number;
 };
@@ -71,6 +73,7 @@ export type Order = {
   items: CartItem[];
   subtotal: number;
   deliveryFee: number;
+  discount?: { code: string; amount: number };
   total: number;
   requiredBy: string;
   status: OrderStatus;
@@ -101,6 +104,7 @@ export type SiteContent = {
     mapEmbed?: string;
     instagram?: string;
     facebook?: string;
+    whatsapp?: string;
   };
   story: {
     title: string;
@@ -111,6 +115,17 @@ export type SiteContent = {
     qrImageUrl?: string;
     qrInstructions: string;
   };
+  faq?: { q: string; a: string }[];
+};
+
+export type UserAddress = {
+  id: string;
+  label: string;
+  name: string;
+  phone: string;
+  address: string;
+  city?: string;
+  isDefault?: boolean;
 };
 
 export type UserProfile = {
@@ -119,5 +134,44 @@ export type UserProfile = {
   displayName?: string;
   phone?: string;
   role: "customer" | "admin";
+  addresses?: UserAddress[];
+  wishlist?: string[];
   createdAt: number;
+  updatedAt: number;
+};
+
+export type ProductReview = {
+  id: string;
+  productId: string;
+  uid?: string | null;
+  name: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  body: string;
+  approved: boolean;
+  createdAt: number;
+};
+
+export type Coupon = {
+  code: string;
+  type: "percent" | "amount";
+  value: number;
+  active: boolean;
+  expiresAt?: number;
+  minSubtotal?: number;
+  description?: string;
+};
+
+export type NewsletterEntry = {
+  email: string;
+  createdAt: number;
+  source?: string;
+};
+
+export type ContactMessage = {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  createdAt: number;
+  resolved?: boolean;
 };

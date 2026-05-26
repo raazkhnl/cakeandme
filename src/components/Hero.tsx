@@ -53,7 +53,7 @@ export function Hero({ content }: { content: SiteContent }) {
               Explore collection
               <ArrowUpRight className="h-4 w-4" />
             </Link>
-            <Link href="/contact" className="btn-ghost">
+            <Link href="/booking" className="btn-ghost">
               Book a consultation
             </Link>
           </motion.div>

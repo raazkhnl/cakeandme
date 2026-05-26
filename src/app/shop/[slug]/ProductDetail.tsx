@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
@@ -8,11 +7,16 @@ import { ArrowUpRight, Check, Heart, Leaf, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import type { Product } from "@/lib/types";
 import { ProductCard } from "@/components/ProductCard";
+import { ProductGallery } from "@/components/ProductGallery";
+import { ReviewSection } from "@/components/ReviewSection";
 import { useCart } from "@/lib/store/cart";
-import { formatNPR, safeImg } from "@/lib/utils";
+import { useWishlist } from "@/lib/store/wishlist";
+import { formatNPR } from "@/lib/utils";
 
 export function ProductDetail({ product, related }: { product: Product; related: Product[] }) {
   const addItem = useCart((s) => s.addItem);
+  const { has, toggle } = useWishlist();
+  const wished = has(product.id);
   const [sizeIdx, setSizeIdx] = useState(0);
   const sizes = product.sizes ?? [{ label: "Standard", pounds: 1, multiplier: 1 }];
   const [flavor, setFlavor] = useState(product.flavors?.[0] ?? "");
@@ -43,7 +47,7 @@ export function ProductDetail({ product, related }: { product: Product; related:
         <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
           <Link href="/shop" className="hover:text-foreground">Shop</Link>
           <span>/</span>
-          <Link href={`/shop?category=${product.category}`} className="hover:text-foreground">
+          <Link href={`/categories/${product.category}`} className="hover:text-foreground">
             {product.category}
           </Link>
           <span>/</span>
@@ -57,31 +61,7 @@ export function ProductDetail({ product, related }: { product: Product; related:
             transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-surface">
-              <div className="relative aspect-[4/5] md:aspect-[16/10]">
-                <Image
-                  src={safeImg(product.images[0])}
-                  alt={product.name}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 720px, 90vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-foreground/30 to-transparent" />
-                {product.tagline && (
-                  <span className="absolute left-6 top-6 chip-secondary">{product.tagline}</span>
-                )}
-              </div>
-            </div>
-            {product.images.length > 1 && (
-              <div className="mt-4 grid grid-cols-4 gap-3">
-                {product.images.slice(0, 4).map((src, i) => (
-                  <div key={i} className="relative aspect-square overflow-hidden rounded-2xl border border-border">
-                    <Image src={safeImg(src)} alt="" fill sizes="200px" className="object-cover" />
-                  </div>
-                ))}
-              </div>
-            )}
+            <ProductGallery images={product.images} alt={product.name} tagline={product.tagline} />
           </motion.div>
 
           <motion.div
@@ -91,9 +71,21 @@ export function ProductDetail({ product, related }: { product: Product; related:
             className="lg:col-span-5"
           >
             <div className="sticky top-28 flex flex-col gap-6">
-              <div>
-                <h1 className="font-display text-display-xl text-balance">{product.name}</h1>
-                <p className="mt-3 text-pretty text-muted-foreground md:text-lg">{product.description}</p>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h1 className="font-display text-display-xl text-balance">{product.name}</h1>
+                  <p className="mt-3 text-pretty text-muted-foreground md:text-lg">{product.description}</p>
+                </div>
+                <button
+                  onClick={() => {
+                    toggle(product.id);
+                    toast.success(wished ? "Removed from wishlist" : "Added to wishlist");
+                  }}
+                  aria-label="Save to wishlist"
+                  className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-colors ${wished ? "border-secondary bg-secondary/15 text-secondary" : "border-border bg-surface/60 text-muted-foreground hover:text-foreground"}`}
+                >
+                  <Heart className={`h-4 w-4 ${wished ? "fill-secondary" : ""}`} />
+                </button>
               </div>
 
               <div className="flex items-baseline gap-3">
@@ -156,19 +148,9 @@ export function ProductDetail({ product, related }: { product: Product; related:
 
               <div className="flex items-center gap-3">
                 <div className="inline-flex items-center rounded-full border border-border bg-surface/60">
-                  <button
-                    onClick={() => setQty((q) => Math.max(1, q - 1))}
-                    className="inline-flex h-11 w-11 items-center justify-center text-muted-foreground hover:text-foreground"
-                  >
-                    −
-                  </button>
+                  <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="inline-flex h-11 w-11 items-center justify-center text-muted-foreground hover:text-foreground">−</button>
                   <span className="min-w-8 text-center font-display text-lg">{qty}</span>
-                  <button
-                    onClick={() => setQty((q) => q + 1)}
-                    className="inline-flex h-11 w-11 items-center justify-center text-muted-foreground hover:text-foreground"
-                  >
-                    +
-                  </button>
+                  <button onClick={() => setQty((q) => q + 1)} className="inline-flex h-11 w-11 items-center justify-center text-muted-foreground hover:text-foreground">+</button>
                 </div>
                 <button onClick={add} className="btn-primary flex-1">
                   Add to basket
@@ -187,12 +169,14 @@ export function ProductDetail({ product, related }: { product: Product; related:
         </div>
       </section>
 
+      <ReviewSection productId={product.id} />
+
       {related.length > 0 && (
         <section className="container-page py-32">
           <div className="mb-10 flex items-end justify-between">
             <h2 className="font-display text-display-lg">You might also like</h2>
             <Link
-              href={`/shop?category=${product.category}`}
+              href={`/categories/${product.category}`}
               className="text-[12px] font-semibold uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground"
             >
               See more in {product.category}

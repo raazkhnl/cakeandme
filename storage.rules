@@ -1,0 +1,42 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    function imageOnly() {
+      return request.resource.contentType.matches("image/.*") &&
+             request.resource.size < 8 * 1024 * 1024;
+    }
+
+    // Catalogue & site imagery — admin only
+    match /products/{path=**} {
+      allow read: if true;
+      allow write: if isAdmin() && imageOnly();
+    }
+    match /qr/{path=**} {
+      allow read: if true;
+      allow write: if isAdmin() && imageOnly();
+    }
+
+    // Payment screenshots — anyone may upload (guest checkout); read by admin
+    match /payment-screenshots/{path=**} {
+      allow read: if isAdmin();
+      allow write: if imageOnly();
+    }
+
+    // General uploads namespace
+    match /uploads/{path=**} {
+      allow read: if true;
+      allow write: if imageOnly();
+    }
+  }
+}

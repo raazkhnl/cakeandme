@@ -1,126 +1,141 @@
 # Cakes by Ratna
 
-A bespoke, admin-configurable e-commerce site for **Cakes by Ratna** — an independent homemaker-led cake atelier. Built with Next.js 15 (App Router), TypeScript, Tailwind CSS, Firebase, and a generous helping of Playfair Display.
+A bespoke, admin-configurable e-commerce site for **Cakes by Ratna** — an independent homemaker-led cake atelier in Kathmandu. Built with Next.js 15 (App Router), TypeScript, Tailwind CSS, Firebase, and a generous helping of Playfair Display.
 
-> Replaces an old Create React App static site. The previous gh-pages site still lives at the `main` / `gh-pages` branches.
+> Replaces the original Create React App static site (preserved on `main` and `gh-pages`).
 
-## Features
+## What's inside
 
-- **Modern, editorial UI** — glassmorphism, ambient flavor-glow lights, bento grids, Playfair Display + Sora type, light/dark themes
-- **Shop** with category filters, search, sort, and slug-routed product pages with size + flavour selection
-- **Cart** — Zustand + localStorage; slide-over drawer + full cart page
-- **Guest or signed-in checkout** — Firebase email/password + Google sign-in; guests use the order code or their email to track later
+### Public site
+- **Home** — hero, marquee, bento categories, featured products, our story, testimonials, newsletter, CTA
+- **Shop** — category chips, search, sort, slug-routed product detail with image carousel, size/flavour selection, custom notes, wishlist toggle
+- **Categories** — listing at `/categories` and detail at `/categories/[slug]`
+- **Gallery** — masonry layout of past work
+- **Cart** — drawer + full page (Zustand + localStorage persist)
+- **Checkout** — guest- or account-friendly, coupon support, four payment methods, sandbox-ready
+- **Order confirmation** at `/checkout/success` with a small confetti moment + copyable code
 - **Order tracking** at `/track` — by code or by email
-- **Payments**
-  - QR / mobile banking with screenshot upload (default, works out of the box)
-  - Khalti / eSewa sandbox stubs (real keys → live)
-  - Cash on delivery
-- **Admin panel** at `/admin` — gated by `NEXT_PUBLIC_ADMIN_EMAILS`
-  - Dashboard with revenue & in-progress counts
-  - Orders list + detail (status updates, payment review, history)
-  - Products CRUD (with image uploads to Firebase Storage)
-  - Categories CRUD
-  - Site content editor (hero copy, about, contact, payment QR, instructions)
-  - Settings overview
-- **Works without Firebase** — seed data + localStorage fallback so you can demo locally before wiring anything up
+- **Account** at `/account` — name/phone/address book; **Orders** at `/orders`; **Wishlist** at `/wishlist`
+- **Auth** — `/login`, `/signup`, `/forgot-password` (Google + email/password via Firebase)
+- **Booking** consultation form (separate from the contact form)
+- **Contact / About / FAQ / Privacy / Terms / Search / 404**
+
+### Payments
+- **QR / mobile-banking** — scan our QR (admin-uploadable), pay, upload screenshot. Default everywhere.
+- **Khalti** — server-side initiation (`/api/payments/khalti/init`) + verify (`/api/payments/khalti/verify`)
+- **eSewa** — client-side POST to sandbox/live + verify (`/api/payments/esewa/verify`)
+- **Cash on delivery**
+
+### Admin (gated by `NEXT_PUBLIC_ADMIN_EMAILS`)
+- Dashboard with revenue / in-progress / ready counts
+- Orders — list with status filters, **bulk status update**, **CSV export**, per-order detail with history
+- Products CRUD with image uploads to Firebase Storage
+- Categories CRUD
+- Reviews moderation
+- Coupons CRUD (percent / amount, expiry, min-subtotal)
+- Customers — aggregated from orders (CSV export)
+- Messages inbox (contact + booking forms)
+- Newsletter subscribers (CSV export)
+- Site content editor — hero copy, about, contact, payment QR + instructions
+- Settings overview
+
+### Backend / data
+- Firebase Auth (email/password + Google)
+- Firestore collections: `products`, `categories`, `settings`, `users` (with `addresses`, `wishlist`), `orders`, `coupons`, `newsletter`, `messages`; reviews live under `products/{id}/reviews`
+- Storage buckets: `products/`, `qr/`, `payment-screenshots/`, `uploads/`
+- Security rules at `firestore.rules` and `storage.rules` (deploy with `firebase deploy --only firestore:rules,storage:rules`)
+- API routes — `/api/orders`, `/api/newsletter`, `/api/contact`, `/api/payments/khalti/{init,verify}`, `/api/payments/esewa/verify`
+
+### Quality / polish
+- Custom typography (Playfair Display + Sora), HSL design tokens, light + dark themes
+- Glassmorphism, parallax flavor-glow, animated micro-interactions (framer-motion)
+- `loading.tsx` + `error.tsx` segments, `global-error.tsx`, hydration-safe cart count
+- Skip-to-content link, WhatsApp floating button, scroll-to-top
+- `sitemap.ts`, `robots.ts`, PWA `manifest.ts`, OG metadata
+- Works **without Firebase env vars** — seed data + localStorage fallback so the demo runs offline
 
 ## Getting started
 
 ```bash
-# Old CRA artefacts can be removed if they're still around:
-#   - node_modules, package-lock.json (now generated by the new package.json)
+# If you have legacy artefacts from the CRA build:
+#   delete  node_modules/   package-lock.json   (regenerated by the new package.json)
 
 npm install
-cp .env.example .env.local   # fill in your Firebase config
-npm run dev
+cp .env.example .env.local       # fill in real values when you're ready
+npm run dev                      # http://localhost:3000
 ```
 
-Open <http://localhost:3000>.
+Visit `/admin` and sign in with an email listed in `NEXT_PUBLIC_ADMIN_EMAILS` to manage the catalogue.
 
-### Environment variables
+## Environment variables
 
-See [`.env.example`](./.env.example). At minimum the site runs with **no env vars** in demo mode — seed cakes and a localStorage order log. To turn it live:
+See [`.env.example`](./.env.example). The site runs entirely without env vars in demo mode — seed cakes + localStorage. To go live:
 
 | Var | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_FIREBASE_*` | Firebase Auth, Firestore, Storage |
-| `NEXT_PUBLIC_ADMIN_EMAILS` | Comma-separated list of admin emails |
-| `NEXT_PUBLIC_KHALTI_PUBLIC_KEY` | Live Khalti payments (optional) |
-| `NEXT_PUBLIC_ESEWA_MERCHANT_CODE` | Live eSewa payments (optional) |
-| `NEXT_PUBLIC_BRAND_PHONE`, `..._EMAIL`, `..._FB` | Footer contact info |
+| `NEXT_PUBLIC_FIREBASE_*` | Firebase Auth / Firestore / Storage |
+| `NEXT_PUBLIC_ADMIN_EMAILS` | Comma-separated admin emails |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (used in sitemap / robots) |
+| `KHALTI_SECRET_KEY`, `KHALTI_LIVE` | Server-side Khalti credentials |
+| `NEXT_PUBLIC_ESEWA_MERCHANT_CODE`, `NEXT_PUBLIC_ESEWA_LIVE` | eSewa merchant code + live toggle |
+| `NEXT_PUBLIC_BRAND_PHONE`, `..._EMAIL`, `..._FB` | Footer / WhatsApp button |
 
-### Firebase setup
+## Firebase setup
 
-1. Create a Firebase project at <https://console.firebase.google.com>.
-2. Enable **Authentication** → Email/Password and Google providers.
-3. Enable **Firestore** in production mode.
-4. Enable **Storage** (default bucket).
-5. Copy the web config into `.env.local`.
-6. Suggested Firestore security rules (paste into Rules):
-
-```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{db}/documents {
-    // public reads on catalog
-    match /products/{doc=**} { allow read: if true; allow write: if request.auth != null; }
-    match /categories/{doc=**} { allow read: if true; allow write: if request.auth != null; }
-    match /settings/{doc=**} { allow read: if true; allow write: if request.auth != null; }
-
-    // orders: anyone can create, owner & admins can read
-    match /orders/{code} {
-      allow read: if true; // tracking by code is intentionally public
-      allow create: if true;
-      allow update, delete: if request.auth != null;
-    }
-  }
-}
-```
-
-Tighten further once you wire a Firebase Admin SDK function to verify admin claims.
+1. Create a project at <https://console.firebase.google.com>
+2. Enable **Authentication** → Email/Password and Google
+3. Enable **Firestore** (production mode) and **Storage**
+4. Copy the web config into `.env.local`
+5. Deploy security rules:
+   ```bash
+   firebase deploy --only firestore:rules,storage:rules
+   ```
+6. Promote your account by setting `role: "admin"` on its `/users/{uid}` document (or add the email to `NEXT_PUBLIC_ADMIN_EMAILS` for the client gate).
 
 ## Deploying to Vercel
 
-```bash
-# Push the branch
-git push -u origin next-migration
-
-# In Vercel:
-# 1. Import the repo
-# 2. Framework preset: Next.js (auto-detected)
-# 3. Add the env vars from .env.example
-# 4. Deploy
-```
-
-The included `vercel.json` pins the region to Mumbai (`bom1`); change if you want.
+1. Push the branch — `git push -u origin feat/cakes-by-ratna-app`
+2. Import the repo at <https://vercel.com/new>
+3. Framework preset: Next.js (auto-detected)
+4. Add the env vars from `.env.example`
+5. Deploy
 
 ## Project layout
 
 ```
 src/
 ├── app/
-│   ├── (home / shop / cart / checkout / track / about / contact / login / signup / orders)
-│   ├── admin/                    # gated by NEXT_PUBLIC_ADMIN_EMAILS
-│   └── layout.tsx, globals.css
-├── components/                   # Hero, BentoCategories, Navbar, CartDrawer, …
+│   ├── (home, shop, categories, gallery, cart, checkout, track, about, contact,
+│   │   booking, faq, privacy, terms, login, signup, forgot-password, account,
+│   │   orders, wishlist, search, not-found, error, loading, sitemap, robots, manifest)
+│   ├── admin/                  # dashboard, orders, products, categories, reviews,
+│   │                           # coupons, customers, messages, newsletter, content, settings
+│   └── api/                    # orders, newsletter, contact, payments/{khalti,esewa}
+├── components/
+│   ├── Hero · BentoCategories · FeaturedProducts · OurStory · Marquee · Testimonials · CTA
+│   ├── Navbar · Footer · CartDrawer · FlavorGlow · SearchDialog · WhatsAppButton · ScrollToTop
+│   ├── ProductCard · ProductGallery · ReviewSection · Newsletter · theme-provider
+│   └── ui/Section
 └── lib/
-    ├── firebase/                 # client config + storage helper
-    ├── auth/useAuth.ts
-    ├── data/                     # products, orders, content, seed
-    ├── store/cart.ts             # Zustand
-    ├── types.ts, utils.ts
+    ├── firebase/               # client + storage helper
+    ├── auth/useAuth.ts         # google + email/password + reset
+    ├── data/                   # products, orders, content, users, reviews, coupons, newsletter, messages, seed
+    ├── store/                  # cart, wishlist (Zustand + persist)
+    ├── payments/               # khalti + esewa helpers
+    ├── types.ts, utils.ts, utils-csv.ts
 ```
 
 ## Migration notes
 
-- The old CRA app at `src/component/*.js` and the gh-pages deploy is preserved on the `main` branch.
-- This branch (`next-migration`) is the new source of truth.
-- `demo.html` was used as the design-language reference for the new UI.
-- `logo.png` and `signature-cake.jpg` (the existing Cakes by Ratna asset) are reused from the old repo.
+- The old CRA app at `src/component/*.js` and the gh-pages deploy live on `main`.
+- The `next-migration` branch is the first-pass Next.js scaffold.
+- This branch (`feat/cakes-by-ratna-app`) is the full-feature build.
+- `demo.html` was the design-language reference for the new UI.
+- `logo.png` and `signature-cake.jpg` (the existing Cakes by Ratna asset) are reused.
 
 ## Known TODOs
 
-- Wire Khalti / eSewa server-side webhooks for live payment confirmation.
-- Add a `gallery` model + masonry page once we have more photography.
-- Move admin gating from client-side `NEXT_PUBLIC_ADMIN_EMAILS` to a Firebase custom claim with a callable function once the team grows.
-- Sitemap + RSS for the (eventual) blog.
+- Wire Resend / SendGrid for transactional order-confirmation emails (API route stubs are in place).
+- Add Firebase Admin SDK + server actions to harden checkout against tampered totals.
+- Add a custom OG image + favicon set.
+- Add Cypress / Playwright smoke tests.

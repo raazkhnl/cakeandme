@@ -3,7 +3,20 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { Box, ChevronLeft, Image as ImageIcon, LayoutDashboard, ListOrdered, Settings2, Tags } from "lucide-react";
+import {
+  Box,
+  ChevronLeft,
+  Image as ImageIcon,
+  LayoutDashboard,
+  ListOrdered,
+  Mail,
+  MessageSquare,
+  Settings2,
+  Star,
+  Tags,
+  Ticket,
+  Users
+} from "lucide-react";
 import { useAuth } from "@/lib/auth/useAuth";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +25,11 @@ const NAV = [
   { href: "/admin/orders", label: "Orders", icon: ListOrdered },
   { href: "/admin/products", label: "Products", icon: Box },
   { href: "/admin/categories", label: "Categories", icon: Tags },
+  { href: "/admin/reviews", label: "Reviews", icon: Star },
+  { href: "/admin/coupons", label: "Coupons", icon: Ticket },
+  { href: "/admin/customers", label: "Customers", icon: Users },
+  { href: "/admin/messages", label: "Messages", icon: MessageSquare },
+  { href: "/admin/newsletter", label: "Newsletter", icon: Mail },
   { href: "/admin/content", label: "Site content", icon: ImageIcon },
   { href: "/admin/settings", label: "Settings", icon: Settings2 }
 ];
