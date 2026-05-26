@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 348 60% 99%;
+    --foreground: 322 28% 11%;
+
+    --primary: 322 100% 12%;
+    --primary-foreground: 0 0% 100%;
+    --primary-fixed: 330 100% 92%;
+
+    --secondary: 46 100% 23%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-fixed: 47 100% 73%;
+
+    --accent: 330 36% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --surface: 348 60% 99%;
+    --surface-variant: 340 16% 90%;
+    --surface-container: 340 26% 95%;
+    --surface-container-low: 340 36% 97%;
+    --surface-container-high: 340 18% 92%;
+    --surface-tint: 326 41% 42%;
+
+    --muted: 340 12% 92%;
+    --muted-foreground: 322 6% 30%;
+
+    --border: 340 18% 86%;
+    --ring: 46 100% 35%;
+
+    --danger: 0 75% 45%;
+    --success: 152 56% 36%;
+
+    --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .dark {
+    --background: 322 18% 6%;
+    --foreground: 340 26% 95%;
+
+    --primary: 330 100% 84%;
+    --primary-foreground: 322 28% 11%;
+    --primary-fixed: 330 70% 30%;
+
+    --secondary: 47 100% 73%;
+    --secondary-foreground: 322 28% 11%;
+    --secondary-fixed: 46 65% 30%;
+
+    --accent: 330 80% 78%;
+    --accent-foreground: 322 28% 11%;
+
+    --surface: 322 18% 6%;
+    --surface-variant: 322 8% 16%;
+    --surface-container: 322 14% 10%;
+    --surface-container-low: 322 18% 8%;
+    --surface-container-high: 322 10% 14%;
+    --surface-tint: 326 64% 70%;
+
+    --muted: 322 10% 14%;
+    --muted-foreground: 340 10% 70%;
+
+    --border: 322 8% 20%;
+    --ring: 47 90% 65%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: hsl(var(--secondary) / 0.35);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1280px] px-page;
+  }
+
+  .glass {
+    background: hsl(var(--surface) / 0.55);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    border: 1px solid hsl(var(--border) / 0.6);
+    box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.12);
+  }
+  .dark .glass {
+    background: hsl(var(--surface-container) / 0.6);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .glass-strong {
+    background: hsl(var(--surface) / 0.8);
+    backdrop-filter: blur(28px) saturate(140%);
+    -webkit-backdrop-filter: blur(28px) saturate(140%);
+    border: 1px solid hsl(var(--border) / 0.7);
+  }
+
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--grain);
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground transition-all duration-300;
+    box-shadow: 0 8px 24px -8px hsl(var(--primary) / 0.5);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -8px hsl(var(--secondary) / 0.5);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface/50 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-foreground backdrop-blur-md transition-all duration-300;
+  }
+  .btn-ghost:hover {
+    @apply border-secondary/60 bg-surface;
+    transform: translateY(-2px);
+  }
+
+  .field {
+    @apply w-full rounded-2xl border border-border bg-surface/70 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-all duration-200;
+  }
+  .field:focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 4px hsl(var(--ring) / 0.18);
+  }
+  .field-label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm;
+  }
+  .chip-secondary {
+    @apply inline-flex items-center gap-2 rounded-full bg-secondary/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary;
+  }
+
+  .hairline {
+    @apply h-px w-12 bg-gradient-to-r from-transparent via-secondary/60 to-transparent;
+  }
+
+  .hover-lift {
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 400ms;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 30px 60px -30px hsl(var(--primary) / 0.25);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .mask-gradient-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+  .mask-gradient-r {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+}

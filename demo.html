@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<title>Cakes by Ratna | Artisanal Homemaker Cakes in Copenhagen</title>
+		<!-- Google Fonts & Material Icons -->
+		<link href="https://fonts.googleapis.com" rel="preconnect" />
+		<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Sora:wght@400;600&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+		<!-- Tailwind Config -->
+		<script id="tailwind-config">
+			tailwind.config = {
+				darkMode: "class",
+				theme: {
+					extend: {
+						colors: {
+							tertiary: "#0e0f0d",
+							"inverse-primary": "#ffafd6",
+							"on-error-container": "#93000a",
+							"surface-variant": "#e9e0e3",
+							background: "#fff8f9",
+							"on-primary": "#ffffff",
+							"surface-container-lowest": "#ffffff",
+							primary: "#240016",
+							"secondary-fixed-dim": "#e9c349",
+							"on-secondary-container": "#745c00",
+							"tertiary-fixed-dim": "#c8c6c3",
+							"surface-container-high": "#efe6e8",
+							"outline-variant": "#d7c1c9",
+							"surface-dim": "#e1d8da",
+							"tertiary-fixed": "#e4e2de",
+							"surface-container-highest": "#e9e0e3",
+							"primary-fixed": "#ffd8e8",
+							"on-primary-fixed": "#3c0028",
+							"on-secondary": "#ffffff",
+							"surface-tint": "#954070",
+							"secondary-fixed": "#ffe088",
+							"error-container": "#ffdad6",
+							"inverse-surface": "#342f31",
+							"on-surface-variant": "#524249",
+							"surface-bright": "#fff8f9",
+							"inverse-on-surface": "#f8eef1",
+							"primary-fixed-dim": "#ffafd6",
+							"tertiary-container": "#232422",
+							"on-tertiary-fixed-variant": "#474744",
+							"primary-container": "#4b0032",
+							"on-secondary-fixed": "#241a00",
+							outline: "#857279",
+							"on-tertiary-container": "#8b8b88",
+							secondary: "#735c00",
+							"on-tertiary-fixed": "#1b1c1a",
+							"on-background": "#1f1a1c",
+							"surface-container-low": "#fbf1f4",
+							"on-primary-container": "#c96c9e",
+							"surface-container": "#f5ebee",
+							"secondary-container": "#fed65b",
+							error: "#ba1a1a",
+							surface: "#fff8f9",
+							"on-tertiary": "#ffffff",
+							"on-error": "#ffffff",
+							"on-secondary-fixed-variant": "#574500",
+							"on-primary-fixed-variant": "#782957",
+							"on-surface": "#1f1a1c",
+						},
+						borderRadius: {
+							DEFAULT: "0.25rem",
+							lg: "0.5rem",
+							xl: "0.75rem",
+							full: "9999px",
+						},
+						spacing: {
+							"margin-desktop": "64px",
+							"container-max": "1280px",
+							"margin-mobile": "20px",
+							gutter: "24px",
+							unit: "8px",
+						},
+						fontFamily: {
+							"body-md": ["Sora"],
+							"label-sm": ["Sora"],
+							"body-lg": ["Sora"],
+							"headline-lg-mobile": ["Playfair Display"],
+							"headline-lg": ["Playfair Display"],
+							"headline-xl": ["Playfair Display"],
+						},
+						fontSize: {
+							"body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+							"label-sm": [
+								"12px",
+								{
+									lineHeight: "16px",
+									letterSpacing: "0.1em",
+									fontWeight: "600",
+								},
+							],
+							"body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+							"headline-lg-mobile": [
+								"32px",
+								{ lineHeight: "40px", fontWeight: "600" },
+							],
+							"headline-lg": [
+								"40px",
+								{ lineHeight: "48px", fontWeight: "600" },
+							],
+							"headline-xl": [
+								"64px",
+								{
+									lineHeight: "72px",
+									letterSpacing: "-0.02em",
+									fontWeight: "700",
+								},
+							],
+						},
+					},
+				},
+			};
+		</script>
+		<style>
+			/* Glassmorphism & Custom Effects */
+			.glass-panel {
+				background: rgba(253, 251, 247, 0.7);
+				backdrop-filter: blur(20px);
+				-webkit-backdrop-filter: blur(20px);
+				border: 1px solid rgba(115, 92, 0, 0.3); /* secondary color w/ opacity */
+				box-shadow: 0 10px 40px -10px rgba(36, 0, 22, 0.1); /* primary color w/ opacity */
+			}
+
+			.dark .glass-panel {
+				background: rgba(14, 15, 13, 0.7);
+				border: 1px solid rgba(255, 224, 136, 0.2);
+				box-shadow: 0 10px 40px -10px rgba(255, 175, 214, 0.1);
+			}
+
+			.flavor-glow {
+				position: absolute;
+				width: 600px;
+				height: 600px;
+				background: radial-gradient(
+					circle,
+					rgba(149, 64, 112, 0.15) 0%,
+					rgba(254, 214, 91, 0.1) 50%,
+					rgba(255, 255, 255, 0) 70%
+				);
+				border-radius: 50%;
+				filter: blur(60px);
+				z-index: -1;
+				pointer-events: none;
+				transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+			}
+
+			.hover-scale {
+				transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+					backdrop-filter 0.4s ease;
+			}
+
+			.hover-scale:hover {
+				transform: scale(1.02) translateY(-4px);
+				backdrop-filter: blur(24px);
+				-webkit-backdrop-filter: blur(24px);
+			}
+
+			.btn-primary {
+				@apply bg-primary text-on-primary font-label-sm text-label-sm px-6 py-3 rounded-full transition-all duration-300;
+			}
+			.btn-primary:hover {
+				box-shadow: 0 0 20px rgba(115, 92, 0, 0.4);
+				transform: translateY(-2px);
+			}
+
+			.btn-secondary {
+				@apply bg-surface/50 backdrop-blur-md border border-secondary/50 text-on-surface font-label-sm text-label-sm px-6 py-3 rounded-full transition-all duration-300;
+			}
+			.btn-secondary:hover {
+				@apply bg-surface border-secondary;
+				transform: translateY(-2px);
+			}
+
+			/* Hide scrollbar for clean horizontal scrolling */
+			.hide-scrollbar::-webkit-scrollbar {
+				display: none;
+			}
+			.hide-scrollbar {
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+			}
+		</style>
+	</head>
+	<body
+		class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden antialiased"
+	>
+		<!-- The Flavor Glow Element -->
+		<div class="flavor-glow" id="glow" style="top: 10%; left: 60%"></div>
+		<div class="flavor-glow" id="glow2" style="top: 50%; left: 10%"></div>
+		<!-- TopNavBar -->
+		<nav
+			class="bg-surface/70 dark:bg-tertiary/70 backdrop-blur-xl text-primary dark:text-inverse-primary docked full-width top-0 sticky z-50 border-b border-secondary/30 dark:border-outline-variant/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-transform"
+		>
+			<div
+				class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto"
+			>
+				<!-- Brand Logo -->
+				<div
+					class="flex items-center gap-3 hover:opacity-80 transition-all duration-300 cursor-pointer"
+				>
+					<img
+						alt="Cakes by Ratna Logo"
+						class="w-10 h-10 object-contain"
+						src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD0meSd3T8xDUjJmzPi_RFX7jtvlguqd2H-g27RDcwmRqHxHtNHbWxSAoluiKEU7OQHB5uFbVhBqkIwDSH3WfpsqaqSHSRNsbWN4GFCs3ID6sx-F3WSrcoqxsFtEUPXU8TOPq45fMEhd9LhyFtlwJPXqxk9mf-3mZepK_hcvUsVCiNtCSsgBpZHL7Kx4mAA7rzVG3yoSmMwMM24kKPWVCIwRzC670qfpCvlf22hALWax-TVNfBA2Z7s8pw7KLai6KIC5sUoPBjd9o"
+					/>
+					<span
+						class="text-body-lg font-headline-lg font-bold tracking-tight text-primary dark:text-inverse-primary hidden md:block"
+						>Cakes by Ratna</span
+					>
+				</div>
+				<!-- Navigation Links (Hidden on Mobile) -->
+				<div class="hidden md:flex gap-8 items-center">
+					<a
+						class="text-secondary dark:text-secondary-fixed border-b-2 border-secondary dark:border-secondary-fixed pb-1 font-label-sm text-label-sm hover:opacity-80 transition-all duration-300 scale-102 active:scale-98"
+						href="#"
+						>Shop</a
+					>
+					<a
+						class="text-on-surface-variant dark:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300 font-label-sm text-label-sm scale-102 active:scale-98"
+						href="#categories"
+						>Categories</a
+					>
+					<a
+						class="text-on-surface-variant dark:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300 font-label-sm text-label-sm scale-102 active:scale-98"
+						href="#our-story"
+						>Our Story</a
+					>
+				</div>
+				<!-- Trailing Actions -->
+				<div class="flex gap-4 items-center">
+					<button
+						aria-label="person"
+						class="hover:opacity-80 transition-all duration-300 text-on-surface-variant dark:text-on-surface hover:text-secondary scale-102 active:scale-98"
+					>
+						<span class="material-symbols-outlined text-[24px]">person</span>
+					</button>
+					<button
+						aria-label="shopping_cart"
+						class="hover:opacity-80 transition-all duration-300 text-on-surface-variant dark:text-on-surface hover:text-secondary scale-102 active:scale-98 relative"
+					>
+						<span class="material-symbols-outlined text-[24px]"
+							>shopping_cart</span
+						>
+						<span
+							class="absolute -top-1 -right-1 bg-secondary text-on-secondary rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-label-sm"
+							>2</span
+						>
+					</button>
+					<!-- Mobile Menu Toggle -->
+					<button
+						aria-label="menu"
+						class="md:hidden hover:opacity-80 transition-all duration-300 text-on-surface-variant"
+					>
+						<span class="material-symbols-outlined text-[24px]">menu</span>
+					</button>
+				</div>
+			</div>
+		</nav>
+		<main>
+			<!-- Hero Section -->
+			<section
+				class="relative min-h-[90vh] flex items-center justify-center px-margin-mobile md:px-margin-desktop py-20 overflow-hidden"
+			>
+				<!-- Background Image with Parallax Effect -->
+				<div class="absolute inset-0 z-0">
+					<img
+						alt="Elegant layered cake"
+						class="w-full h-full object-cover object-center opacity-40"
+						data-alt="An exquisite, multi-tiered wedding cake displayed in a luminous, futuristic minimalist gallery space. The cake features delicate, geometric sugar art and edible gold accents. The lighting is high-key and soft, creating a glowing, ethereal atmosphere. The color palette focuses on pristine whites, soft creams, and rich, deep plum shadows, evoking elevated indulgence and modern luxury."
+						src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIaCnnZIdfzSN2nghbULfVL1jR_WuqBAQ9LmKCYrTMPUFEWbPvMEh7riQj-QutkkG_5gfq-QwOb8wGs5rUrQUH9jMmiZY5Zqw0HujR-DVGfXivZeGVaT0mJad2sajjNp3SR5XDQiUrUOLU-Q43Rm4KWFGZMIU1FGgN9Z1p0O6kpxF8j1Cj0imiqFSeLttFPqHUyKEGN3Ez3m3tvYw_a0GHaEDqbySdSSjDasE806qa4BRkqWsTdZk_DPsxrGA6cjO6KUBLCCjLKR8"
+					/>
+					<div
+						class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"
+					></div>
+				</div>
+				<div
+					class="relative z-10 max-w-container-max mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center"
+				>
+					<div class="lg:col-span-7 flex flex-col gap-6 lg:pr-12">
+						<span
+							class="inline-block px-4 py-1.5 rounded-full border border-secondary/30 text-secondary font-label-sm text-label-sm w-max backdrop-blur-sm bg-surface/50"
+						>
+							Copenhagen's Premium Artisanal Bakery
+						</span>
+						<h1
+							class="text-headline-lg-mobile md:text-headline-xl font-headline-lg-mobile md:font-headline-xl text-primary leading-tight"
+						>
+							Cakes that tell <br /><span class="italic text-surface-tint"
+								>your story</span
+							>.
+						</h1>
+						<p
+							class="text-body-lg font-body-lg text-on-surface-variant max-w-xl"
+						>
+							A fusion of traditional homemaker intimacy and modern culinary
+							artistry. Hand-crafted in Copenhagen for life's most exquisite
+							moments.
+						</p>
+						<div class="flex flex-wrap gap-4 mt-4">
+							<button class="btn-primary">Explore Collections</button>
+							<button class="btn-secondary">Book a Consultation</button>
+						</div>
+					</div>
+					<!-- Featured Hero Card (Glassmorphic) -->
+					<div class="lg:col-span-5 mt-12 lg:mt-0 relative hidden md:block">
+						<div class="glass-panel rounded-2xl p-4 hover-scale relative z-20">
+							<div class="rounded-xl overflow-hidden relative aspect-[4/5]">
+								<img
+									alt="Signature Cake"
+									class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+									data-alt="A close-up shot of a highly stylized, modern artisanal dessert with layers of deep plum mousse and edible gold leaf. The dessert is presented on a minimalist white stone plate against a soft, glowing background. The aesthetic is futuristic and luxurious, emphasizing the textures and rich colors."
+									src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWp7fl4rOm3aNfmXRa29p7yK9y2uI5mbOo_jTrfBarJXcnMJ0KmI08Uv1P9RZ0ae1Wn03caRZ-yXztdyc8wDS7b1ZM2l4gCBM7s-D4nBZJqBQnn3ZhN0ENfb4PoiD6KSdIyKs9IeoFgz2IpttpNlrcJgShdO1BWN7d1D8VgMuWY52fbuAJSRgN_vxcgJ2G_E9LyfIyaHE6fbAW9XdT09V-kJPAwUZCkMcpYkxR0-1pVvyuUHiPUaekgf6too3m6RnbMjQLGgyWpRc"
+								/>
+								<!-- Glass Footer on Card -->
+								<div
+									class="absolute bottom-0 left-0 right-0 p-6 bg-surface/80 backdrop-blur-xl border-t border-secondary/20 flex justify-between items-end"
+								>
+									<div>
+										<span
+											class="text-secondary font-label-sm text-label-sm uppercase tracking-widest block mb-1"
+											>Signature</span
+										>
+										<h3
+											class="text-body-lg font-headline-lg text-primary font-bold"
+										>
+											Midnight Plum Opera
+										</h3>
+									</div>
+									<button
+										class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-surface-tint transition-colors"
+									>
+										<span class="material-symbols-outlined text-[20px]"
+											>arrow_forward</span
+										>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Categories Section (Bento Grid) -->
+			<section
+				class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low"
+				id="categories"
+			>
+				<div class="max-w-container-max mx-auto">
+					<div class="flex justify-between items-end mb-12">
+						<div>
+							<h2
+								class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary"
+							>
+								Featured Categories
+							</h2>
+							<p class="text-body-md font-body-md text-on-surface-variant mt-2">
+								Curated selections for every occasion.
+							</p>
+						</div>
+						<button
+							class="hidden md:flex items-center gap-2 text-secondary font-label-sm text-label-sm hover:opacity-80 transition-opacity"
+						>
+							View All
+							<span class="material-symbols-outlined text-[16px]"
+								>trending_flat</span
+							>
+						</button>
+					</div>
+					<div
+						class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 auto-rows-[300px]"
+					>
+						<!-- Bento Box 1: Wedding (Spans 2 columns on desktop) -->
+						<a
+							class="md:col-span-2 relative rounded-2xl overflow-hidden group hover-scale block"
+							href="#"
+						>
+							<img
+								alt="Wedding Cakes"
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+								data-alt="A grand, multi-tiered wedding cake adorned with cascading, hyper-realistic sugar flowers in shades of blush pink and deep plum. The cake sits on a sleek, transparent pedestal in a modern, light-filled venue. The background features soft, glowing glass panels. The overall look is ultra-premium, romantic yet futuristic."
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuAacGAQcZdim8vL761yUjdNnbVsRChRXAVHPZXheaItkTX31BveFVb3obfKw-EvVx6aiI7t8oaHRQBbKjxBLr-UluAHBoA0If222FzzRH4RcOBsgRNQILwf3VyOm1jlc_90LFt1_0diFwpyUB2N3mjIxbU5yEgU_BaoFe-j65dMCCO2s2SFqYdPFXHHenDiqSZltxlQghvPRK4BYjdsZ-JTlHSzMYth5dsVCjJM5UodfcJYkzTPsb3Rnmpzoejo6ivmpQiREMTU4zs"
+							/>
+							<div
+								class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"
+							></div>
+							<div class="absolute bottom-0 left-0 p-8 w-full">
+								<span
+									class="inline-block px-3 py-1 bg-surface-tint text-on-primary rounded-full font-label-sm text-[10px] mb-3"
+									>01</span
+								>
+								<h3
+									class="text-headline-lg-mobile font-headline-lg-mobile text-on-primary mb-2"
+								>
+									Wedding Cakes
+								</h3>
+								<p
+									class="text-body-md font-body-md text-surface-variant max-w-md hidden md:block"
+								>
+									Architectural elegance meets unparalleled flavor profiles for
+									your most important day.
+								</p>
+							</div>
+						</a>
+						<!-- Bento Box 2: Birthday -->
+						<a
+							class="relative rounded-2xl overflow-hidden group hover-scale block"
+							href="#"
+						>
+							<img
+								alt="Birthday Specials"
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+								data-alt="A vibrant, modern birthday cake with a smooth, perfectly tempered chocolate glaze and abstract splashes of edible gold. Lit by sharp, dramatic lighting that highlights the glossy texture. The background is a clean, minimal cream color, emphasizing the cake as a piece of edible modern art."
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbk6wiz2RIB6xaxPYnfNHEZv78a4Vk0g_mXqjo1i2kPgjrFPHP3H_uKp_HGeZ7cerJ5jdN5sNVLk_SPH93HBPshR-FF4yqqYAXnWG0DarsOYwMRf-mF6BsyZkZenCowTxZ4CCn0p7MCUzis2DtWz7RpBp9jRZ27Vj56vG4cl3WnUiAJ0-tMQWGx4e9hiu-hsodzlBkRKsGuS_kK-vgHwrIWa6UbhEjPLtNbSXAueifmPNePeBdbwCmhunAVqeDkecTZstiyaCp26U"
+							/>
+							<div
+								class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"
+							></div>
+							<div class="absolute bottom-0 left-0 p-6 w-full">
+								<span
+									class="inline-block px-3 py-1 bg-secondary text-on-secondary-fixed rounded-full font-label-sm text-[10px] mb-3"
+									>02</span
+								>
+								<h3 class="text-body-lg font-headline-lg text-on-primary">
+									Birthday Specials
+								</h3>
+							</div>
+						</a>
+						<!-- Bento Box 3: Artisanal Treats -->
+						<a
+							class="md:col-span-3 relative rounded-2xl overflow-hidden group hover-scale block h-full"
+							href="#"
+						>
+							<img
+								alt="Artisanal Treats"
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+								data-alt="An array of exquisite artisanal cupcakes and macarons arranged on a sleek, glass tier display. The treats feature sophisticated colors like deep plum, warm gold, and crisp white. Shot from a slightly high angle with soft, diffused light creating subtle glows on the glass surfaces. The setting is clean, airy, and high-end."
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFm0mKnmzvdOPUmicBnaNyUI4tkvITgI0KIwbIbC3zuXI8Ym3oCpFKhGWFCw5rAB3OwWXdS6O2qUFuLk7Mk_s8IZoam9qLaPmAfczd5uHMtE8zj8aHmUJHhD_wDN99K16zs6Sh5hho8W1Ps9JbEi7svCtft8yzpjaMey91Dc4dchjIMIcSF_C-KjQlZDY9iTzH7GF-skl6jr9N4FcY0QY1JYSf5TkDOTo9u5LyGniSimY8lSKIFdtQV2Rhh-kl4ZH6V4ARX37XYTg"
+							/>
+							<div
+								class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"
+							></div>
+							<div
+								class="absolute top-1/2 -translate-y-1/2 left-0 p-8 w-full max-w-lg"
+							>
+								<span
+									class="inline-block px-3 py-1 bg-outline text-on-primary rounded-full font-label-sm text-[10px] mb-3"
+									>03</span
+								>
+								<h3
+									class="text-headline-lg-mobile font-headline-lg-mobile text-on-primary mb-4"
+								>
+									Artisanal Treats
+								</h3>
+								<p class="text-body-md font-body-md text-surface-variant mb-6">
+									Bite-sized perfection. Curated boxes of macarons, delicate
+									tarts, and signature cupcakes.
+								</p>
+								<span
+									class="text-secondary-fixed flex items-center gap-2 font-label-sm text-label-sm"
+								>
+									Shop Treats
+									<span class="material-symbols-outlined text-[16px]"
+										>arrow_forward</span
+									>
+								</span>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+			<!-- Our Story (Asymmetric Layout) -->
+			<section
+				class="py-32 px-margin-mobile md:px-margin-desktop relative overflow-hidden"
+				id="our-story"
+			>
+				<div
+					class="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24 relative z-10"
+				>
+					<div class="w-full md:w-1/2 relative">
+						<!-- Glassmorphic framing -->
+						<div
+							class="absolute -inset-4 bg-secondary/10 rounded-3xl blur-2xl z-0"
+						></div>
+						<img
+							alt="Ratna crafting a cake"
+							class="relative z-10 w-full rounded-2xl shadow-[0_20px_50px_rgba(36,0,22,0.15)] object-cover aspect-square"
+							data-alt="A female baker in a pristine, minimalist white kitchen carefully placing edible gold leaf onto a dark plum glazed cake. The scene is softly lit, with sunlight streaming through large windows, creating a warm, inviting glow. The kitchen features sleek, futuristic appliances blended with rustic, artisanal wooden tools. The mood is intimate yet highly professional."
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2D1DvTcIxagUFnYpbEoaKQ8O4Z7PCm9ex0ggNnZfZhPL2NhlczakxRbFFtbiShPKljVIJdd5FkvGSwhI914drcB3g5OcnIeX2_IwxydP4xG4iqVi97TbNgwSU9bomJ2A-Rrs0HcD23tlZVK-bJOBjLwhbr1g2c-rVypdrPZ9C8OoIKzSNqZNKEDGJEWTKynk7C8XREBHXAehhSqC8C5XQeetIKsn-lfcKwn-1jbh8fjh29tTkfa1Xw9CSEPfX1qsL2hNVW7MV4vw"
+						/>
+						<!-- Floating Badge -->
+						<div
+							class="absolute -bottom-8 -right-8 glass-panel p-6 rounded-xl max-w-[200px] z-20 hidden md:block"
+						>
+							<span
+								class="material-symbols-outlined text-secondary text-[32px] mb-2"
+								>location_on</span
+							>
+							<p class="text-label-sm font-label-sm text-primary uppercase">
+								Hand-crafted in
+							</p>
+							<p class="text-body-lg font-headline-lg text-primary font-bold">
+								Copenhagen
+							</p>
+						</div>
+					</div>
+					<div class="w-full md:w-1/2 flex flex-col gap-6">
+						<h2
+							class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary"
+						>
+							From a homemaker's kitchen to modern artistry.
+						</h2>
+						<div class="h-[1px] w-12 bg-secondary/50"></div>
+						<p
+							class="text-body-md font-body-md text-on-surface-variant leading-relaxed"
+						>
+							Founded by Ratna, a passionate homemaker with an eye for
+							structural beauty, our bakery bridges the gap between traditional,
+							soulful baking and next-gen culinary aesthetics.
+						</p>
+						<p
+							class="text-body-md font-body-md text-on-surface-variant leading-relaxed"
+						>
+							Every cake is a canvas. We use only the finest local ingredients
+							in Copenhagen, blending them with innovative techniques to create
+							desserts that are visually striking and emotionally resonant.
+						</p>
+						<div class="mt-8">
+							<a
+								class="inline-flex items-center gap-3 text-surface-tint font-label-sm text-label-sm hover:opacity-80 transition-opacity"
+								href="#"
+							>
+								Read the full story
+								<span class="material-symbols-outlined">east</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- Footer -->
+		<footer
+			class="bg-surface-container-low dark:bg-tertiary text-on-surface dark:text-on-tertiary-fixed full-width bottom-0 border-t border-outline-variant/30 dark:border-outline/20 relative z-10"
+		>
+			<div
+				class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto"
+			>
+				<!-- Brand Column -->
+				<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+					<span
+						class="text-headline-lg-mobile font-headline-lg-mobile text-primary dark:text-inverse-primary"
+						>Cakes by Ratna</span
+					>
+					<p
+						class="text-body-md font-body-md text-on-surface-variant mt-2 max-w-xs"
+					>
+						Elevated indulgence. Artisanal cakes for the discerning palate.
+					</p>
+				</div>
+				<!-- Links -->
+				<div
+					class="col-span-1 md:col-span-2 flex flex-col md:flex-row gap-8 md:gap-16 md:justify-center"
+				>
+					<div class="flex flex-col gap-3">
+						<span
+							class="text-label-sm font-label-sm text-primary uppercase tracking-widest mb-2"
+							>Explore</span
+						>
+						<a
+							class="text-body-md font-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-secondary dark:hover:text-inverse-primary transition-colors duration-200"
+							href="#"
+							>Shop</a
+						>
+						<a
+							class="text-body-md font-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-secondary dark:hover:text-inverse-primary transition-colors duration-200"
+							href="#"
+							>Team</a
+						>
+						<a
+							class="text-body-md font-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-secondary dark:hover:text-inverse-primary transition-colors duration-200"
+							href="#"
+							>Locations</a
+						>
+					</div>
+					<div class="flex flex-col gap-3">
+						<span
+							class="text-label-sm font-label-sm text-primary uppercase tracking-widest mb-2"
+							>Legal</span
+						>
+						<a
+							class="text-body-md font-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-secondary dark:hover:text-inverse-primary transition-colors duration-200"
+							href="#"
+							>Privacy Policy</a
+						>
+						<a
+							class="text-body-md font-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-secondary dark:hover:text-inverse-primary transition-colors duration-200"
+							href="#"
+							>Contact</a
+						>
+					</div>
+				</div>
+				<!-- Copyright -->
+				<div
+					class="col-span-1 md:col-span-1 flex items-end md:justify-end mt-8 md:mt-0"
+				>
+					<p class="text-label-sm font-label-sm text-on-surface-variant">
+						© 2024 Cakes by Ratna. Hand-crafted in Copenhagen.
+					</p>
+				</div>
+			</div>
+		</footer>
+		<!-- Interactive Glow Script -->
+		<script>
+			document.addEventListener("mousemove", (e) => {
+				const glow = document.getElementById("glow");
+				const x = e.clientX / window.innerWidth;
+				const y = e.clientY / window.innerHeight;
+
+				// Subtle parallax effect based on mouse position
+				glow.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+			});
+
+			// Parallax on scroll for glow2
+			window.addEventListener("scroll", () => {
+				const glow2 = document.getElementById("glow2");
+				const scrolled = window.scrollY;
+				glow2.style.transform = `translateY(${scrolled * 0.2}px)`;
+			});
+		</script>
+	</body>
+</html>
